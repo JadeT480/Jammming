@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
-const SearchBar = (props) => {
+const SearchBar = ({onSearch}) => {
   const [text, setText] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`You searched for the song: ${text}`);
+    onSearch(text);
     setText("");
   };
 

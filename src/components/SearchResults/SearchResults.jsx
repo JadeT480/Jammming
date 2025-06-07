@@ -2,31 +2,13 @@ import React from 'react';
 
 import Tracklist from '../Tracklist/Tracklist';
 
-const SearchResults = (props) => {
-  const testTracks = [
-    {
-      id: 1,
-      title: "Bleed Out",
-      artist: "Within Temptation"
-    },
-    {
-      id: 2,
-      title: "Rise Again",
-      artist: "Apocalyptica, Epica, Simone Simons"
-    },
-    {
-      id: 3,
-      title: "Up From the Bottom",
-      artist: "Linkin Park"
-    }
-  ]
-
+const SearchResults = ({ tracks }) => {
   return (
     <>
       <h2>Search Results</h2>
-      <Tracklist tracks={testTracks}/>
+      <Tracklist tracks={tracks} />
     </>
-  )
+  );
 };
 
 export default SearchResults;
