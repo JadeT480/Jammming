@@ -1,5 +1,5 @@
 const clientId = "79931863617b40548088cb982ae0833f";
-const redirectUri = "https://jadet480.github.io/Jammming/"; // your redirect URI
+const redirectUri = "https://jadet480.github.io/Jammming"; // your redirect URI
 let accessToken;
 
 const Spotify = {
