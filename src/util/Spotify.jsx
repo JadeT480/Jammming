@@ -1,5 +1,5 @@
 const clientId = "79931863617b40548088cb982ae0833f";
-const redirectUri = "http://127.0.0.1:5173"; // your redirect URI
+const redirectUri = "https://jadet480.github.io/Jammming/"; // your redirect URI
 let accessToken;
 
 const Spotify = {
@@ -23,19 +23,23 @@ const Spotify = {
 
       return accessToken;
     } else {
-      const accessUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public%20playlist-modify-private
-&redirect_uri=${redirectUri}`;
+      const accessUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public%20playlist-modify-private&redirect_uri=${encodeURIComponent(redirectUri)}`;
       window.location = accessUrl;
     }
   },
 
   search(term) {
     const accessToken = Spotify.getAccessToken();
-    return fetch(`https://api.spotify.com/v1/search?type=track&q=${encodeURIComponent(term)}`, {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    })
+    return fetch(
+      `https://api.spotify.com/v1/search?type=track&q=${encodeURIComponent(
+        term
+      )}`,
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    )
       .then((response) => {
         return response.json();
       })

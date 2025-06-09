@@ -1,31 +1,18 @@
-import React, { use, useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 
-// import components as they are created
 import SearchBar from "../SearchBar/SearchBar";
 import SearchResults from "../SearchResults/SearchResults";
 import Playlist from "../Playlist/Playlist";
+import Spotify from "../../util/Spotify";
 
 function App() {
   // Deals with searching and search results
   const [searchResults, setSearchResults] = useState([]);
   const handleSearch = (term) => {
-    // testing, using mock results based on term.
-    const mockResults = [
-      {
-        id: 1,
-        title: `Search result for ${term} 1`,
-        artist: "Artist A",
-        album: "Album A",
-      },
-      {
-        id: 2,
-        title: `Search result for ${term} 2`,
-        artist: "Artist B",
-        album: "Album B",
-      },
-    ];
-    setSearchResults(mockResults);
+    Spotify.search(term).then(results => {
+      setSearchResults(results);
+    });
   };
 
   // Deals with playlists, adding and removing tracks
@@ -41,13 +28,12 @@ function App() {
   };
 
   const savePlaylist = () => {
-    console.log("Saving your playlist...");
-    console.log("Your playlist name is: ", playlistName);
-    console.log("Saved Tracks: ", playlistTracks);
-    // Reset the playlist once the user has saved
+  const trackUris = playlistTracks.map(track => track.uri);
+  Spotify.savePlaylist(playlistName, trackUris).then(() => {
     setPlaylistName("New Playlist");
     setPlaylistTracks([]);
-  };
+  });
+};
 
   // Deals with setting playlist name
   const [playlistName, setPlaylistName] = useState("New Playlist");
