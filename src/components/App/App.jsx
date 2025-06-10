@@ -4,13 +4,13 @@ import "./App.css";
 import SearchBar from "../SearchBar/SearchBar";
 import SearchResults from "../SearchResults/SearchResults";
 import Playlist from "../Playlist/Playlist";
-import Spotify from "../../util/Spotify";
+import Deezer from "../../util/Deezer";
 
 function App() {
   // Deals with searching and search results
   const [searchResults, setSearchResults] = useState([]);
   const handleSearch = (term) => {
-    Spotify.search(term).then(results => {
+    Deezer.search(term).then((results) => {
       setSearchResults(results);
     });
   };
@@ -27,13 +27,18 @@ function App() {
     setPlaylistTracks(playlistTracks.filter((song) => song.id !== track.id));
   };
 
+  const [message, setMessage] = useState("");
   const savePlaylist = () => {
-  const trackUris = playlistTracks.map(track => track.uri);
-  Spotify.savePlaylist(playlistName, trackUris).then(() => {
+    // Show the message that saving is not supported
+    setMessage("Sorry, saving playlists is not supported with Deezer.");
+
+    // Clear message after a few seconds (optional)
+    setTimeout(() => setMessage(""), 4000);
+
+    // Optionally clear playlist name and tracks if you want
     setPlaylistName("New Playlist");
     setPlaylistTracks([]);
-  });
-};
+  };
 
   // Deals with setting playlist name
   const [playlistName, setPlaylistName] = useState("New Playlist");
@@ -47,6 +52,7 @@ function App() {
       <div>
         <SearchBar onSearch={handleSearch} />
         <SearchResults tracks={searchResults} onAdd={addTrack} />
+        {message && <div className="message">{message}</div>}
         <Playlist
           tracks={playlistTracks}
           onRemove={removeTrack}
