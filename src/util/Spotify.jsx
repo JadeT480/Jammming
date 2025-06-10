@@ -1,5 +1,5 @@
 const clientId = "79931863617b40548088cb982ae0833f";
-const redirectUri = "https://jadet480.github.io/Jammming"; // your redirect URI
+const redirectUri = "https://jadet480.github.io/Jammming/"; // your redirect URI
 let accessToken;
 
 const Spotify = {
@@ -19,7 +19,7 @@ const Spotify = {
       // Expiry for clearing token
       window.setTimeout(() => (accessToken = ""), expiresIn * 1000);
       // Clear parameters, to allow for grabbing new access token when it expires.
-      window.history.pushState("Access Token", null, "/");
+      window.history.pushState("Access Token", null, "/Jammming/");
 
       return accessToken;
     } else {
@@ -31,6 +31,7 @@ const Spotify = {
 
   search(term) {
     const accessToken = Spotify.getAccessToken();
+    console.log("Access Token: ", accessToken);
     return fetch(
       `https://api.spotify.com/v1/search?type=track&q=${encodeURIComponent(
         term
