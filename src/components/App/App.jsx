@@ -49,17 +49,19 @@ function App() {
   return (
     <>
       <h1>Jammming!</h1>
-      <div>
+      <div className="App">
         <SearchBar onSearch={handleSearch} />
-        <SearchResults tracks={searchResults} onAdd={addTrack} />
-        {message && <div className="message">{message}</div>}
-        <Playlist
-          tracks={playlistTracks}
-          onRemove={removeTrack}
-          name={playlistName}
-          onPlaylistNameChange={handlePlaylistNameChange}
-          onSavePlaylist={savePlaylist}
-        />
+        <div className="App-playlist">
+          <SearchResults tracks={searchResults} onAdd={addTrack} />
+          {message && <div className="message">{message}</div>}
+          <Playlist
+            tracks={playlistTracks}
+            onRemove={removeTrack}
+            name={playlistName}
+            onPlaylistNameChange={handlePlaylistNameChange}
+            onSavePlaylist={savePlaylist}
+          />
+        </div>
       </div>
     </>
   );
