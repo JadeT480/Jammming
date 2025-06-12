@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./App.css";
+import styles from "./App.module.css";
 
 import SearchBar from "../SearchBar/SearchBar";
 import SearchResults from "../SearchResults/SearchResults";
@@ -47,23 +47,23 @@ function App() {
   };
 
   return (
-    <>
+    <div>
       <h1>Jammming!</h1>
-      <div className="App">
+      <div className={styles.App}>
         <SearchBar onSearch={handleSearch} />
-        <div className="App-playlist">
+        <div className={styles.AppPlaylist}>
           <SearchResults tracks={searchResults} onAdd={addTrack} />
-          {message && <div className="message">{message}</div>}
           <Playlist
             tracks={playlistTracks}
             onRemove={removeTrack}
             name={playlistName}
             onPlaylistNameChange={handlePlaylistNameChange}
             onSavePlaylist={savePlaylist}
+            message={message}
           />
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

@@ -25,13 +25,13 @@ h2 {
 .App {
   height: 100%;
   padding: 0 15% 10% 15%;
-  background-color: #5c0e14;
+  background-color: #551d63;
   font-family: 'Savate', sans-serif;
   font-weight: 600;
   color: #A056BF;
 }
 
-.App-playlist {
+.AppPlaylist {
   display: flex;
   justify-content: space-between;
   width: 100%;

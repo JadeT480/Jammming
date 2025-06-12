@@ -1,0 +1,60 @@
+.Playlist {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+  width: 35%;
+  max-height: 945px;
+  padding: 2.2rem 1.15rem;
+  background-color: #621981;
+  box-shadow: 0 4px 2px 2px #0d0d0d;
+}
+
+.Playlist input {
+  width: 100%;
+  background: transparent;
+  border-bottom: 1px solid #a056bf;
+  font-family: "Savate", sans-serif;
+  font-size: 1.5rem;
+  text-align: center;
+  color: #cba0dd;
+}
+
+.Message {
+  padding: 10%;
+  background-color: #0d0d0d;
+  font-family: "Savate", sans-serif;
+  font-weight: 600;
+  color: #a056bf;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.SavePlaylist {
+  cursor: pointer;
+  width: 10rem;
+  padding: 0.75rem 0;
+  border-radius: 50px;
+  margin-top: 1.25rem;
+  background-color: #0d0d0d;
+  text-align: center;
+  font-size: 0.8rem;
+  transition: background-color 0.25s;
+  color: #cba0dd;
+  font-weight: 600;
+}
+
+.SavePlaylist:hover {
+  background-color: #650a6d;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+@media only screen and (max-width: 1020px) {
+  .Playlist {
+    width: 90%;
+  }
+}
